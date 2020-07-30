@@ -54,6 +54,7 @@ public class HomeActivity extends AppCompatActivity {
                     case 0:
                         //TODO 添加到跳转到计划巡检的页面
                         //123
+                        //杨成雷
                         Intent intent=new Intent(HomeActivity.this,Planned_security_check_Activity.class);
                         startActivity(intent);
                         break;
@@ -62,6 +63,7 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     //TODO　安检绩效
                     case 2:
+
                         break;
                 }
             }
