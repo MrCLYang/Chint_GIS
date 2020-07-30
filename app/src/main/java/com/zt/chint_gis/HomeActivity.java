@@ -52,6 +52,8 @@ public class HomeActivity extends AppCompatActivity {
                 switch (i) {
                     //TODO 计划安检
                     case 0:
+                        //TODO 添加到跳转到计划巡检的页面
+                        //123
                         Intent intent=new Intent(HomeActivity.this,Planned_security_check_Activity.class);
                         startActivity(intent);
                         break;
