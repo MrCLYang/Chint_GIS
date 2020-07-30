@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".HomeActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/tow_main_background">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="GIS巡检"
+            android:textColor="@color/BlackColor"
+            android:textSize="21sp" />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_color" />
+
+    <LinearLayout
+        android:background="@drawable/concen_bt_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:textColor="@color/BlackColor"
+            android:textSize="20dp"
+            android:text="安检员：特朗普"
+            android:id="@+id/tv_security_check_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textColor="@color/BlackColor"
+            android:textSize="20dp"
+            android:text="安检组：正泰燃气分公司"
+            android:id="@+id/tv_security_check_Group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/main_backgroud"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp">
+
+            <ImageView
+                android:id="@+id/iv_All_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/all" />
+
+            <TextView
+                android:id="@+id/tv_All_"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_toRightOf="@id/iv_All_img"
+                android:text="20"
+                android:textColor="@color/BlackColor"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/tv_All_Des"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_All_"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="9dp"
+                android:layout_toRightOf="@id/iv_All_img"
+                android:text="全部"
+                android:textColor="@color/BlackColor"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp">
+
+            <ImageView
+                android:id="@+id/iv_UnCompleted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/uncompleted" />
+
+            <TextView
+                android:id="@+id/tv_UnCompleted_"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_toRightOf="@id/iv_UnCompleted"
+                android:text="20"
+                android:textColor="@color/BlackColor"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/tv_UnCompleted_Des"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_UnCompleted_"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="9dp"
+                android:layout_toRightOf="@id/iv_UnCompleted"
+                android:text="未完成"
+                android:textColor="@color/BlackColor"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp">
+
+            <ImageView
+                android:id="@+id/iv_Completed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/completed" />
+
+            <TextView
+                android:id="@+id/tv_Completed_"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_toRightOf="@id/iv_Completed"
+                android:text="20"
+                android:textColor="@color/BlackColor"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/tv_Completed_Des"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_Completed_"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="9dp"
+                android:layout_toRightOf="@id/iv_Completed"
+                android:text="完成"
+                android:textColor="@color/BlackColor"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:id="@+id/tv_Tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="提醒"
+            android:textColor="@color/Tip_color"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_Tip_Content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_Tip"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/alarm" />
+
+            <TextView
+                android:id="@+id/tv_Tip_Content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="有5个设备即将过期!"
+                android:textColor="@color/BlackColor" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_Tip_Time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_Tip_Content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="2020-07-29 15:00"
+            android:textColor="@color/BlackColor" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_Inspection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="巡检"
+        android:textColor="@color/Tip_color"
+        android:textSize="18sp" />
+
+    <GridView
+        android:id="@+id/gv_"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:columnWidth="90dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="25dp"></GridView>
+
+</LinearLayout>

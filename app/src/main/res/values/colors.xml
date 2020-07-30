@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#FF5722</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="bt_color">#02db72</color>
+    <color name="main_backgroud">#509ff1</color>
+    <color name="tow_main_background">#25c1ff</color>
+    <color name="divider_color">#e5e5e5</color>
+    <color name="input_content_color">#b2b2b2</color>
+    <color name="backColor">#e0f2F2</color>
+    <color name="Tip_color">#0061b2</color>
+    <color name="charge_Color">#FF223C</color>
+    <color name="BlackColor">#000000</color>
+</resources>
