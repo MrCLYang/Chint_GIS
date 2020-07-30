@@ -2,6 +2,7 @@ package com.zt.chint_gis;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,8 @@ public class HomeActivity extends AppCompatActivity {
                 switch (i) {
                     //TODO 计划安检
                     case 0:
+                        Intent intent=new Intent(HomeActivity.this,Planned_security_check_Activity.class);
+                        startActivity(intent);
                         break;
                     //TODO 抽样安检
                     case 1:
