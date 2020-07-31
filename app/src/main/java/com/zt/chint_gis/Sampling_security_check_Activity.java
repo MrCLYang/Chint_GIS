@@ -9,6 +9,6 @@ public class Sampling_security_check_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sampling_security_check_);
+        setContentView(R.layout.activity_sampling_security_check);
     }
 }

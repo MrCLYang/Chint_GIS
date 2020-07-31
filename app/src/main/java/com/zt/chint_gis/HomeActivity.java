@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
@@ -37,8 +38,9 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
         getSupportActionBar().hide();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_home);
         initview();
         initevent();
 
@@ -53,8 +55,6 @@ public class HomeActivity extends AppCompatActivity {
                     //TODO 计划安检
                     case 0:
                         //TODO 添加到跳转到计划巡检的页面
-                        //123
-                        //杨成雷
                         Intent intent=new Intent(HomeActivity.this,Planned_security_check_Activity.class);
                         startActivity(intent);
                         break;

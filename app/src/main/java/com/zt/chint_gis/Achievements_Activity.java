@@ -9,6 +9,6 @@ public class Achievements_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_achievements_);
+        setContentView(R.layout.activity_achievements);
     }
 }
