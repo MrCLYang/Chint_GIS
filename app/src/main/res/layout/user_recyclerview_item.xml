@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_page_bg"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingTop="5dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="5dp">
+
+    <TextView
+        android:id="@+id/tv_UserNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="用户编号：2100000225"
+        android:textColor="@color/color_black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_UserName"
+        style="@style/user_style_list_tv"
+        android:text="用户名：薛之谦"
+        app:layout_constraintTop_toBottomOf="@+id/tv_UserNumber" />
+
+    <TextView
+        android:id="@+id/tv_UserAddress"
+        style="@style/user_style_list_tv"
+        android:layout_marginRight="10dp"
+        android:text="用户地址：明月大道正泰大厦25"
+        app:layout_constraintTop_toBottomOf="@+id/tv_UserName" />
+
+    <TextView
+        android:id="@+id/tv_UserStatus"
+        style="@style/user_style_list_tv"
+        android:layout_marginRight="10dp"
+        android:text="安检状态：待安检"
+        app:layout_constraintTop_toBottomOf="@+id/tv_UserAddress" />
+</LinearLayout>

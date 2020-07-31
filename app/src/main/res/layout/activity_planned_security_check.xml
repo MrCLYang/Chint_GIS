@@ -14,4 +14,8 @@
         app:title="安检工单列表"
         app:size_title="20sp"
         app:icon_back="true" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_Check_List"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>
