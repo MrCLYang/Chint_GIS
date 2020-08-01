@@ -15,7 +15,7 @@ import com.zt.chint_gis.R;
 /**
  * Time:2020/8/1
  * Author:YCL
- * Description:
+ * Description: 自定item的分割线
  */
 public class CustomDecoration extends RecyclerView.ItemDecoration{
     public static final int HORIZONTAL_LIST = LinearLayoutManager.HORIZONTAL;

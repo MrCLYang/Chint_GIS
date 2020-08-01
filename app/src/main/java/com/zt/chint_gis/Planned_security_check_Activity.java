@@ -32,7 +32,9 @@ public class Planned_security_check_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_planned_security_check);
         initdata();
         initview();
+        initevent();
     }
+
 
     private void initdata() {
         new Thread(new Runnable() {
@@ -69,7 +71,6 @@ public class Planned_security_check_Activity extends AppCompatActivity {
 
             }
         });
-
         rv_check_list = findViewById(R.id.rv_Check_List);
         dataList = new ArrayList<>();
         MyRecyclerViewAdapter myRecyclerViewAdapter=new MyRecyclerViewAdapter(this,dataList);
@@ -80,4 +81,15 @@ public class Planned_security_check_Activity extends AppCompatActivity {
                 this, LinearLayoutManager.VERTICAL, R.drawable.divider_mileage, 15));
         rv_check_list.setAdapter(myRecyclerViewAdapter);
     }
+
+    private void initevent() {
+
+
+
+
+
+
+
+    }
+
 }
