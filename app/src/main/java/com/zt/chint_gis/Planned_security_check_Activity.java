@@ -14,6 +14,7 @@ import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
 import com.zt.chint_gis.adapter.MyRecyclerViewAdapter;
 import com.zt.chint_gis.bean.UserBean;
+import com.zt.chint_gis.utils.CustomDecoration;
 
 import java.util.ArrayList;
 
@@ -75,20 +76,8 @@ public class Planned_security_check_Activity extends AppCompatActivity {
         LinearLayoutManager manager=new LinearLayoutManager(Planned_security_check_Activity.this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         rv_check_list.setLayoutManager(manager);
+        rv_check_list.addItemDecoration(new CustomDecoration(
+                this, LinearLayoutManager.VERTICAL, R.drawable.divider_mileage, 15));
         rv_check_list.setAdapter(myRecyclerViewAdapter);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
