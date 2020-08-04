@@ -12,35 +12,35 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.zt.chint_gis.R;
 import com.zt.chint_gis.bean.UserBean;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
- * Time:2020/7/31
+ * Time:2020/8/1
  * Author:YCL
  * Description:
  */
-public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.MyViewHolder> {
-    private Context context;
-    private List<UserBean> DataList;
-    private View inflater;
+public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAdapter.MyViewHolder> {
 
+    private Context mContext;
+    private ArrayList<UserBean> DataList;
+    private View inflate;
+    private OnItemClikListener mOnItemClikListener;
 
-    public MyRecyclerViewAdapter(Context context, List<UserBean> DataList) {
-        this.context = context;
-        this.DataList = DataList;
+    public MyRecyclerviewAdapter(Context context, ArrayList<UserBean> datalist) {
+        this.mContext=context;
+        this.DataList=datalist;
     }
-
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        inflater = LayoutInflater.from(context).inflate(R.layout.user_recyclerview_item, parent, false);
-        MyViewHolder MyHolder = new MyViewHolder(inflater);
-        return MyHolder;
+        inflate = LayoutInflater.from(mContext).inflate(R.layout.user_recyclerview_item, parent, false);
+        MyViewHolder myViewHolder=new MyViewHolder(inflate);
+        return myViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
         holder.userNumber.setText(DataList.get(position).getUserNumbers());
         holder.userName.setText(DataList.get(position).getUserName());
         holder.userAddress.setText(DataList.get(position).getUserAddress());
@@ -49,6 +49,14 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         }else {
             holder.userStatus.setText("待安检");
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int potion = holder.getLayoutPosition();
+                mOnItemClikListener.onItemClik(holder.itemView,position);
+            }
+        });
+
     }
 
     @Override
@@ -56,12 +64,14 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         return DataList.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder{
+
 
         TextView userNumber;
         TextView userName;
         TextView userAddress;
         TextView userStatus;
+
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -72,5 +82,15 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         }
     }
 
+
+
+
+    public interface  OnItemClikListener{
+        void onItemClik(View view, int position);
+        void onItemLongClik(View view, int position);
+    }
+    public void setItemClikListener(OnItemClikListener OnItemClikListener) {
+        this.mOnItemClikListener = OnItemClikListener;
+    }
 
 }
