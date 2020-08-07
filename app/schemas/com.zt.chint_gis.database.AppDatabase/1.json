@@ -1,0 +1,153 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "4853cc149fcc45631b5a2081fd9283c5",
+    "entities": [
+      {
+        "tableName": "security_check",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`cons_name` TEXT, `cons_no` TEXT NOT NULL, `cons_emread` TEXT, `cons_during_time` TEXT, `cons_check_hourse` TEXT, `cons_check_reason` TEXT, `cons_check_img` TEXT, `cons_frim_number` TEXT, `cons_frim_star` TEXT, `cons_frim_img` TEXT, `cons_frim_signtype` TEXT, `cons_frim_signimg` TEXT, `cons_state` TEXT, `errormsg_a` TEXT, `errortext_a` TEXT, `errormsg_b` TEXT, `errortext_b` TEXT, `errormsg_c` TEXT, `errortext_c` TEXT, `errormsg_d` TEXT, `errortext_d` TEXT, PRIMARY KEY(`cons_no`))",
+        "fields": [
+          {
+            "fieldPath": "cons_name",
+            "columnName": "cons_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cons_no",
+            "columnName": "cons_no",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cons_emread",
+            "columnName": "cons_emread",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cons_during_time",
+            "columnName": "cons_during_time",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cons_check_hourse",
+            "columnName": "cons_check_hourse",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cons_check_reason",
+            "columnName": "cons_check_reason",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cons_check_img",
+            "columnName": "cons_check_img",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cons_frim_number",
+            "columnName": "cons_frim_number",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cons_frim_star",
+            "columnName": "cons_frim_star",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cons_frim_img",
+            "columnName": "cons_frim_img",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cons_frim_signtype",
+            "columnName": "cons_frim_signtype",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cons_frim_signimg",
+            "columnName": "cons_frim_signimg",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cons_state",
+            "columnName": "cons_state",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "errormsg_a",
+            "columnName": "errormsg_a",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "errortext_a",
+            "columnName": "errortext_a",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "errormsg_b",
+            "columnName": "errormsg_b",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "errortext_b",
+            "columnName": "errortext_b",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "errormsg_c",
+            "columnName": "errormsg_c",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "errortext_c",
+            "columnName": "errortext_c",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "errormsg_d",
+            "columnName": "errormsg_d",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "errortext_d",
+            "columnName": "errortext_d",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "cons_no"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"4853cc149fcc45631b5a2081fd9283c5\")"
+    ]
+  }
+}
