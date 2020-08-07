@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.zt.chint_gis.ui.GongdanCommit;
+
 public class HomeActivity extends AppCompatActivity {
 
     private ImageView mIvAllImg;
@@ -38,7 +40,6 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_home);
         initview();
@@ -63,7 +64,8 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     //TODO　安检绩效
                     case 2:
-
+                        Intent intent1=new Intent(HomeActivity.this, GongdanCommit.class);
+                        startActivity(intent1);
                         break;
                 }
             }

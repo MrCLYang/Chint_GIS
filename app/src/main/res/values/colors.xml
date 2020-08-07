@@ -23,4 +23,5 @@
     <color name="colorTitle">#666</color>
     <color name="common_red">#f11919</color>
     <color name="colorWhite">#ffffffff</color>
+    <color name="color_f6">#f6f6f6</color>
 </resources>
