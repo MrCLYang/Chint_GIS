@@ -1,11 +1,17 @@
 package com.zt.chint_gis.bean;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 /**
  * Time:2020/7/31
  * Author:YCL
  * Description:创建用户Bean
  */
+@Entity(tableName = "user_items")//表名
 public class UserBean {
+    @PrimaryKey@NonNull
     private String UserNumbers;//用户号码
     private String UserName;//用户名
     private String PhoneNumbers;//用户电话
