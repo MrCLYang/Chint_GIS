@@ -1,24 +1,25 @@
 package com.zt.chint_gis;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
 
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+
 import com.zt.chint_gis.adapter.MyRecyclerviewAdapter;
 import com.zt.chint_gis.bean.UserBean;
 import com.zt.chint_gis.utils.CustomDecoration;
@@ -26,43 +27,73 @@ import com.zt.chint_gis.utils.CustomDecoration;
 import java.util.ArrayList;
 
 public class Planned_security_check_Activity extends AppCompatActivity {
-
-    private TitleBar mTitleBar;
     private RecyclerView recyclerView;
     private ArrayList<UserBean> datalist;
     private MyRecyclerviewAdapter adapter;
-    private RefreshLayout refreshLayout;
 
 
-    private boolean refreshType;
-    private int page;
-    private int oldListSize;
-    private int newListSize;
-    private int addListSize;
     private LinearLayoutManager manager;
-    private DividerItemDecoration itemDecoration;
-    private ImageView mLoadingView;
-    private LinearLayout ll_loadingView;
+    private TitleBar mTitleBar;
+    private ImageButton ib_reverse_order;
+    private ImageButton ib_refresh;
+    private TextView tv_unChecked_numbers;
+    private LinearLayout loading_view_ll;
+    private ImageView loading_view;
+    private RelativeLayout rl_title;
 
+    private boolean isReverse_order = false;//是否倒序
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         getSupportActionBar().hide();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_planned_security_check);
         initview();
+        initdata();
         initevent();
+
     }
-    private void initview() {
-        mTitleBar = findViewById(R.id.mTitleBar);
-        recyclerView = findViewById(R.id.rv_test);
-        refreshLayout = findViewById(R.id.refreshLayout);
-        mLoadingView = findViewById(R.id.loading_view);
-        ll_loadingView = findViewById(R.id.loading_view_ll);
-        AnimationDrawable anim = (AnimationDrawable) mLoadingView.getDrawable();
-        anim.start();
-        datalist = new ArrayList<>();
+
+    private void initdata() {
+        for (int i = 0; i < 20; i++) {
+            UserBean bean = new UserBean();
+            bean.setUserNumbers("2020" + i);
+            bean.setUserName("林俊杰" + i);
+            bean.setUserAddress("月明路250号正泰大厦1栋25楼第七排" + i);
+            bean.setGasNumber("1234567890" + i);
+            bean.setGasAccount("600" + i);
+            bean.setGasType("物联网表");
+            bean.setPhoneNumbers("18271671597");
+            bean.setUserType("居民");
+            bean.setCheckedStatus(false);
+            datalist.add(bean);
+        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                for (int i = 0; i < 20; i++) {
+                    UserBean bean = new UserBean();
+                    bean.setUserNumbers("2020" + (i + 20));
+                    bean.setUserName("特朗普" + (i + 20));
+                    bean.setUserAddress("月明路250号正泰大厦1栋25楼第七排" + (i + 20));
+                    bean.setGasNumber("1234567890" + (i + 20));
+                    bean.setGasAccount("600" + (i + 20));
+                    bean.setGasType("物联网表");
+                    bean.setPhoneNumbers("18271671597");
+                    bean.setUserType("居民");
+                    bean.setCheckedStatus(false);
+                    datalist.add(bean);
+                }
+            }
+        }).start();
+
     }
 
     private void initevent() {
@@ -83,101 +114,66 @@ public class Planned_security_check_Activity extends AppCompatActivity {
             }
         });
 
+        adapter = new MyRecyclerviewAdapter(this, datalist);
+        manager = new LinearLayoutManager(this);
+        manager.setOrientation(RecyclerView.VERTICAL);
+        recyclerView.setLayoutManager(manager);
+        recyclerView.addItemDecoration(new CustomDecoration(this, LinearLayoutManager.VERTICAL, R.drawable.divider_mileage, 15));
+        recyclerView.setAdapter(adapter);
 
-        //TODO 刷新监听
-        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+        //定时器关闭数据加载动画
+        new Handler().postDelayed(new Runnable() {
+
             @Override
-            public void onRefresh(@NonNull final RefreshLayout refreshLayout) {
-                refreshLayout.getLayout().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        refreshType = true;
-                        page=1;
-                        DataDoing();
-                        refreshLayout.finishRefresh();
-                        refreshLayout.resetNoMoreData();
-                    }
-                }, 1000);
+            public void run() {
+                recyclerView.setVisibility(View.VISIBLE);
+                rl_title.setVisibility(View.VISIBLE);
+                loading_view_ll.setVisibility(View.GONE);
+            }
+        }, 1500);
+        tv_unChecked_numbers.setText("待检户数:" + datalist.size());
+
+        //TODO 倒序的功能，虽然不知道什么屌用
+        ib_reverse_order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isReverse_order) {
+                    System.out.println("我要顺序");
+                    manager.setStackFromEnd(false);
+                    manager.setReverseLayout(false);
+                    adapter.notifyDataSetChanged();
+                    tv_unChecked_numbers.setText("待检户数:" + datalist.size());
+                    isReverse_order = false;
+                } else {
+                    System.out.println("我要倒序");
+                    manager.setStackFromEnd(true);
+                    manager.setReverseLayout(true);
+                    adapter.notifyDataSetChanged();
+                    tv_unChecked_numbers.setText("待检户数:" + datalist.size());
+                    isReverse_order = true;
+                }
             }
         });
 
-        //TODO 加载更新监听
-        refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+        //TODO 刷新
+        ib_refresh.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onLoadMore(@NonNull final RefreshLayout refreshLayout) {
-                refreshLayout.getLayout().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        refreshType = false;
-                        if (page>2) {
-                            Toast.makeText(getApplicationContext(), "暂无更多的数据", Toast.LENGTH_SHORT).show();
-                            refreshLayout.finishLoadMoreWithNoMoreData();
-                            return;
-                        }
-                        DataDoing();
-                        refreshLayout.setEnableLoadMore(true);
-                        refreshLayout.finishLoadMore();
-
-                    }
-                }, 1000);
+            public void onClick(View view) {
+                adapter.notifyDataSetChanged();
+                tv_unChecked_numbers.setText("待检户数:" + datalist.size());
             }
         });
-        refreshLayout.autoRefresh();
-    }
-
-    private void DataDoing() {
-        //TODO 刷新数据
-        if(refreshType&& datalist!=null){
-            datalist.clear();
-            oldListSize=0;
-        }else {
-            oldListSize=datalist.size();
-        }
-        //TODO 假数据
-        if(page==1){
-            for (int i = 0; i < 20; i++) {
-                UserBean bean=new UserBean();
-                bean.setUserNumbers("2020"+i);
-                bean.setUserName("杨成雷"+i);
-                bean.setUserAddress("月明路正太大厦25楼"+i);
-                bean.setCheckedStatus(false);
-                datalist.add(bean);
-            }
-        }else  if(page==2){
-            for (int i = 0; i < 10; i++) {
-                UserBean bean=new UserBean();
-                bean.setUserNumbers("2020"+(i+20));
-                bean.setUserName("杨成雷"+(i+20));
-                bean.setUserAddress("月明路正太大厦25楼"+(i+20));
-                bean.setCheckedStatus(false);
-                datalist.add(bean);
-            }
-        }
-
-        //新的list数据
-        newListSize=datalist.size();
-        //再次加载的数据
-        addListSize=newListSize-oldListSize;//
-        if (refreshType) {
-            adapter = new MyRecyclerviewAdapter(this, datalist);
-            manager = new LinearLayoutManager(this);
-            manager.setOrientation(RecyclerView.VERTICAL);
-            recyclerView.setLayoutManager(manager);
-            recyclerView.addItemDecoration(new CustomDecoration(this, LinearLayoutManager.VERTICAL, R.drawable.divider_mileage, 15));
-            recyclerView.setAdapter(adapter);
-        } else {
-            //从那个位置添加
-            adapter.notifyItemRangeInserted(datalist.size()-addListSize, datalist.size());
-            adapter.notifyItemRangeChanged(datalist.size()-addListSize, datalist.size());
-        }
-        page++;
-        recyclerView.setVisibility(View.VISIBLE);
-        ll_loadingView.setVisibility(View.GONE);
         adapter.setItemClikListener(new MyRecyclerviewAdapter.OnItemClikListener() {
             @Override
-            public void onItemClik(View view, int position) {
-                Toast.makeText(getApplicationContext(),datalist.get(position).getUserName(),Toast.LENGTH_SHORT).show();
-
+            public void onItemClik(View view, int position, UserBean bean) {
+                //TODO 可以传一个Bean过去
+                Toast.makeText(getApplicationContext(), bean.getPhoneNumbers(), Toast.LENGTH_SHORT).show();
+                /*TODO 传递bean到新页面
+                *Intent intent=new Intent(DataList_Show_Activity.this,TestActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("bean",bean);
+                intent.putExtras(bundle);
+                startActivity(intent);*/
             }
 
             @Override
@@ -187,6 +183,20 @@ public class Planned_security_check_Activity extends AppCompatActivity {
         });
     }
 
+    private void initview() {
+        mTitleBar = findViewById(R.id.mTitleBar);
+        recyclerView = findViewById(R.id.rv_test);
+        ib_reverse_order = findViewById(R.id.ib_reverse_order);
+        ib_refresh = findViewById(R.id.ib_refresh);
+        datalist = new ArrayList<>();
+        tv_unChecked_numbers = findViewById(R.id.tv_UnChecked_Numbers);//待检户数
 
 
+        rl_title = findViewById(R.id.rl_Title);//条目栏
+        loading_view_ll = findViewById(R.id.loading_view_ll);//动画的控件
+        loading_view = findViewById(R.id.loading_view);
+        AnimationDrawable anim = (AnimationDrawable) loading_view.getDrawable();//开启动画
+        anim.start();
+
+    }
 }

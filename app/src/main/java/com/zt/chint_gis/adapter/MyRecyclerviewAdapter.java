@@ -1,6 +1,7 @@
 package com.zt.chint_gis.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,16 +45,20 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
         holder.userNumber.setText(DataList.get(position).getUserNumbers());
         holder.userName.setText(DataList.get(position).getUserName());
         holder.userAddress.setText(DataList.get(position).getUserAddress());
+
+
         if(DataList.get(position).isCheckedStatus()){
             holder.userStatus.setText("已安检");
+            holder.userStatus.setTextColor(Color.BLUE);
         }else {
             holder.userStatus.setText("待安检");
+            holder.userStatus.setTextColor(Color.RED);
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int potion = holder.getLayoutPosition();
-                mOnItemClikListener.onItemClik(holder.itemView,position);
+                UserBean bean=DataList.get(position);
+                mOnItemClikListener.onItemClik(holder.itemView,position,bean);
             }
         });
 
@@ -71,8 +76,6 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
         TextView userName;
         TextView userAddress;
         TextView userStatus;
-
-
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             userNumber = itemView.findViewById(R.id.tv_UserNumber);
@@ -86,11 +89,12 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
 
 
     public interface  OnItemClikListener{
-        void onItemClik(View view, int position);
+        void onItemClik(View view, int position,UserBean bean);
         void onItemLongClik(View view, int position);
     }
     public void setItemClikListener(OnItemClikListener OnItemClikListener) {
         this.mOnItemClikListener = OnItemClikListener;
     }
+
 
 }

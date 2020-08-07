@@ -4,39 +4,112 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/color_page_bg"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:paddingLeft="10dp"
     android:paddingTop="5dp"
     android:paddingRight="10dp"
     android:paddingBottom="5dp">
 
-    <TextView
-        android:id="@+id/tv_UserNumber"
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@color/color_page_bg"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/tv_UserNumber">
+
+            <TextView
+                style="@style/user_style_list_tv"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="用户编号：" />
+
+            <TextView
+                android:id="@+id/tv_UserNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="6dp"
+                android:text="2100000225"
+                android:textColor="@color/color_black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/tv_UserNumber">
+
+            <TextView
+                style="@style/user_style_list_tv"
+                android:text="用户名称：" />
+
+            <TextView
+                android:id="@+id/tv_UserName"
+                style="@style/user_style_list_tv"
+                android:text="薛之谦" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/tv_UserNumber">
+
+            <TextView
+                style="@style/user_style_list_tv"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="安检状态：" />
+
+            <TextView
+                android:id="@+id/tv_UserStatus"
+                style="@style/user_style_list_tv"
+                android:layout_marginRight="10dp"
+                android:text="待安检"
+                app:layout_constraintTop_toBottomOf="@+id/tv_UserAddress" />
+            />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/tv_UserNumber">
+
+            <TextView
+                style="@style/user_style_list_tv"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="用户地址：" />
+
+            <TextView
+                android:id="@+id/tv_UserAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="6dp"
+                android:maxEms="12"
+                android:text="明月大道正泰大厦2511112222222
+2322222"
+                android:textColor="@color/common_gray"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/tv_UserName" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:text="用户编号：2100000225"
-        android:textColor="@color/color_black"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/tv_UserName"
-        style="@style/user_style_list_tv"
-        android:text="用户名：薛之谦"
-        app:layout_constraintTop_toBottomOf="@+id/tv_UserNumber" />
-
-    <TextView
-        android:id="@+id/tv_UserAddress"
-        style="@style/user_style_list_tv"
-        android:layout_marginRight="10dp"
-        android:text="用户地址：明月大道正泰大厦25"
-        app:layout_constraintTop_toBottomOf="@+id/tv_UserName" />
-
-    <TextView
-        android:id="@+id/tv_UserStatus"
-        style="@style/user_style_list_tv"
-        android:layout_marginRight="10dp"
-        android:text="安检状态：待安检"
-        app:layout_constraintTop_toBottomOf="@+id/tv_UserAddress" />
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/toleft" />
 </LinearLayout>

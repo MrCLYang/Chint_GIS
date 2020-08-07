@@ -8,8 +8,14 @@ package com.zt.chint_gis.bean;
 public class UserBean {
     private String UserNumbers;//用户号码
     private String UserName;//用户名
+    private String PhoneNumbers;//用户电话
     private String UserAddress;//用户地址
+    private String UserType;//用户类型
     private boolean CheckedStatus;//检测状态
+
+    private String GasNumber;//表号
+    private String GasType;//表类型
+    private String GasAccount;//购入量
 
     public String getUserNumbers() {
         return UserNumbers;
@@ -41,5 +47,45 @@ public class UserBean {
 
     public void setCheckedStatus(boolean checkedStatus) {
         CheckedStatus = checkedStatus;
+    }
+
+    public String getPhoneNumbers() {
+        return PhoneNumbers;
+    }
+
+    public void setPhoneNumbers(String phoneNumbers) {
+        PhoneNumbers = phoneNumbers;
+    }
+
+    public String getUserType() {
+        return UserType;
+    }
+
+    public void setUserType(String userType) {
+        UserType = userType;
+    }
+
+    public String getGasNumber() {
+        return GasNumber;
+    }
+
+    public void setGasNumber(String gasNumber) {
+        GasNumber = gasNumber;
+    }
+
+    public String getGasType() {
+        return GasType;
+    }
+
+    public void setGasType(String gasType) {
+        GasType = gasType;
+    }
+
+    public String getGasAccount() {
+        return GasAccount;
+    }
+
+    public void setGasAccount(String gasAccount) {
+        GasAccount = gasAccount;
     }
 }

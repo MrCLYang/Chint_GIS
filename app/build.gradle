@@ -28,8 +28,5 @@ dependencies {
 
     // 通用标题栏
     implementation 'com.hjq:titlebar:3.5'
-    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-21'
-    implementation  'com.scwang.smart:refresh-header-classics:2.0.1'
-    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-21'
     implementation "com.android.support:recyclerview-v7:29.0.0"
 }
